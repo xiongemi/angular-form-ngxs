@@ -1,0 +1,8 @@
+<nav mat-tab-nav-bar>
+  <a mat-tab-link [routerLink]="['/delivery']"> {{ 'TABS.DELIVERY' | translate }} </a>
+  <a mat-tab-link [routerLink]="['/shipping']"> {{ 'TABS.SHIPPING' | translate }} </a>
+  <a mat-tab-link [routerLink]="['/payment']"> {{ 'TABS.PAYMENT' | translate }} </a>
+</nav>
+<div class="ma4 mh5-m mh6-l">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,56 @@
+{
+  "TABS": {
+    "DELIVERY": "Delivery",
+    "SHIPPING": "Shipping",
+    "PAYMENT": "Payment"
+  },
+  "DELIVERY": {
+    "SHIPPING_SAME": "My shipping Address is same as my billing Address.",
+    "USER_CHECKOUT_OPTIONS": "User checkout options",
+    "CREATE_ACCOUNT": "Create Account",
+    "CHECKOUT_AS_GUEST": "Checkout as a Guest",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "PASSWORD_MATCH": "Passwords must match",
+    "PASSWORD_HINT": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character (@$!%*#?&)"
+  },
+  "SHIPPING": {
+    "SHIPPING_METHODS": "Shipping Methods",
+    "GET_IT_BY": "get it by",
+    "IS_A_GIFT": "Item is a gift",
+    "GIFT_OPTIONS": "Gift Options",
+    "INCLUDE_GIFT_RECEIPT": "Include gift receipt",
+    "RECIPIENT_NAME": "Recipient Name",
+    "CUSTOM_MESSAGE": "Custom Message",
+    "GIFT_WRAP": "Add gift wrap"
+  },
+  "PAYMENT": {
+    "PAYMENT_METHOD": "Payment Method",
+    "CARD_NUMBER": "Card Number",
+    "EXPIRY_DATE": "Expiry Date",
+    "CVV": "CVV"
+  },
+  "ADDRESS": {
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "ADDRESS_LINE_1": "Address Line 1",
+    "ADDRESS_LINE_2": "Address Line 2",
+    "CITY": "City / District",
+    "PROVINCE": "Province / State",
+    "COUNTRY": "Country",
+    "POSTAL_CODE": "Postal Code",
+    "SHIPPING_ADDRESS": "Shipping Address",
+    "BILLING_ADDRESS": "Billing Address"
+  },
+  "ERRORS": {
+    "REQUIRED": "Field is required",
+    "PATTERN": "Invalid format",
+    "FORM_ERROR": "Please fix all the errors."
+  },
+  "COMMON": {
+    "NEXT": "Next",
+    "SUBMIT": "Submit",
+    "PREVIOUS": "Previous"
+  }
+}

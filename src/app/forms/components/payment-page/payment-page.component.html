@@ -1,0 +1,25 @@
+<form [formGroup]="paymentPageForm" (ngSubmit)="onSubmit()">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ 'PAYMENT.PAYMENT_METHOD' | translate }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content id="payment-method">
+      <mat-form-field>
+        <mat-label>{{ 'PAYMENT.CARD_NUMBER' | translate }}</mat-label>
+        <input matInput type="tel" formControlName="cardNumber" required />
+      </mat-form-field>
+
+      <div>
+        <mat-form-field class="mr3">
+          <mat-label>{{ 'PAYMENT.EXPIRY_DATE' | translate }}</mat-label>
+          <input matInput type="month" formControlName="expiryDate" [min]="minExpiryDate" required />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{ 'PAYMENT.CVV' | translate }}</mat-label>
+          <input matInput type="tel" formControlName="cvv" required />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>

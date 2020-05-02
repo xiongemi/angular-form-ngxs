@@ -1,0 +1,88 @@
+<form [formGroup]="deliveryPageForm" (ngSubmit)="onSubmit()">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ 'ADDRESS.BILLING_ADDRESS' | translate }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <afn-address-form formControlName="billingAddress" [touched]="deliveryPageForm.get('billingAddress').touched"></afn-address-form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-checkbox formControlName="isShippingSame" class="mt3 db">{{ 'DELIVERY.SHIPPING_SAME' | translate }}</mat-checkbox>
+
+  <mat-card *ngIf="!deliveryPageForm.value.isShippingSame" class="mt3">
+    <mat-card-header>
+      <mat-card-title>{{ 'ADDRESS.SHIPPING_ADDRESS' | translate }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <afn-address-form formControlName="shippingAddress" [touched]="deliveryPageForm.get('shippingAddress').touched"></afn-address-form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-radio-group [attr.aria-label]="'DELIVERY.USER_CHECKOUT_OPTIONS' | translate" formControlName="createAccount" class="db mt3">
+    <mat-radio-button class="mr3" [value]="true">{{ 'DELIVERY.CREATE_ACCOUNT' | translate }}</mat-radio-button>
+    <mat-radio-button [value]="false">{{ 'DELIVERY.CHECKOUT_AS_GUEST' | translate }}</mat-radio-button>
+  </mat-radio-group>
+
+  <mat-card class="mt3" formGroupName="account">
+    <mat-card-content>
+      <mat-form-field class="w-100">
+        <mat-label>{{ 'DELIVERY.EMAIL' | translate }}</mat-label>
+        <input type="email" matInput formControlName="email" required maxlength="50" />
+        <mat-error *ngIf="deliveryPageForm.get(['account', 'email']).hasError('required')">
+          {{ 'ERRORS.REQUIRED' | translate }}
+        </mat-error>
+        <mat-error *ngIf="deliveryPageForm.get(['account', 'email']).hasError('email')">
+          {{ 'ERRORS.PATTERN' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <div *ngIf="deliveryPageForm.value.createAccount">
+        <mat-form-field class="mr3">
+          <mat-label>
+            {{ 'DELIVERY.PASSWORD' | translate }}
+            <span aria-hidden="true"> * </span>
+          </mat-label>
+          <input type="password" matInput formControlName="password" [errorStateMatcher]="passwordErrorStateMatcher" maxlength="30" />
+          <mat-error *ngIf="deliveryPageForm.hasError('password')">
+            {{ 'ERRORS.REQUIRED' | translate }}
+          </mat-error>
+          <mat-error *ngIf="deliveryPageForm.get(['account', 'password']).hasError('pattern')">
+            {{ 'ERRORS.PATTERN' | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>
+            {{ 'DELIVERY.CONFIRM_PASSWORD' | translate }}
+            <span aria-hidden="true"> * </span>
+          </mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="confirmPassword"
+            [errorStateMatcher]="confirmPassowrdErrorStateMatcher"
+            maxlength="30"
+          />
+          <mat-error *ngIf="deliveryPageForm.hasError('confirmPassword')">
+            {{ 'ERRORS.REQUIRED' | translate }}
+          </mat-error>
+          <mat-error *ngIf="deliveryPageForm.hasError('passwordMatch')">
+            {{ 'DELIVERY.PASSWORD_MATCH' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-hint class="db">{{ 'DELIVERY.PASSWORD_HINT' | translate }}</mat-hint>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="mt3 tc">
+    <button mat-raised-button color="primary" type="submit">
+      {{ 'COMMON.NEXT' | translate }}
+      <mat-icon aria-hidden="false" aria-label="Example home icon">navigate_next</mat-icon>
+    </button>
+    <mat-error *ngIf="submitted && deliveryPageForm.invalid">
+      {{ 'ERRORS.FORM_ERROR' | translate }}
+    </mat-error>
+  </div>
+</form>
