@@ -50,7 +50,10 @@
   },
   "COMMON": {
     "NEXT": "Next",
-    "SUBMIT": "Submit",
-    "PREVIOUS": "Previous"
+    "PAY": "Pay",
+    "PREVIOUS": "Previous",
+    "RESET": "Reset",
+    "REVIEW": "Review",
+    "EDIT": "Edit"
   }
 }

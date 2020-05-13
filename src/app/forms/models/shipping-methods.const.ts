@@ -27,4 +27,4 @@ export const shippingMethods: ShippingMethod[] = [
       max: add(new Date(), { days: 2 })
     }
   }
-];
+].sort((method1, method2) => method1.price - method2.price);

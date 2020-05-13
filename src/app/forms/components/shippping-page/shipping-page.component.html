@@ -1,4 +1,11 @@
-<form [formGroup]="shippingPageForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="shippingPageForm" ngxsForm="forms.shippingForm" (ngSubmit)="onSubmit()">
+  <div class="mb3">
+    <button mat-raised-button color="secondary" type="reset">
+      {{ 'COMMON.RESET' | translate }}
+      <mat-icon aria-hidden="true">clear</mat-icon>
+    </button>
+  </div>
+
   <mat-card>
     <mat-card-header>
       <mat-card-title>{{ 'SHIPPING.SHIPPING_METHODS' | translate }}</mat-card-title>
@@ -9,8 +16,8 @@
           <span class="ws-normal">
             <span class="fw5">
               {{ shippingMethod.price ? (shippingMethod.price | currency) : '' }}
-              {{ shippingMethod.type }} </span
-            >:
+              {{ shippingMethod.type }}:
+            </span>
             {{ 'SHIPPING.GET_IT_BY' | translate }}
             {{ shippingMethod.arrival.min | date: 'E, MMM d' }}
             {{ shippingMethod.arrival.min ? '-' : '' }}
@@ -18,6 +25,9 @@
           </span>
         </mat-radio-button>
       </mat-radio-group>
+      <mat-error *ngIf="shippingPageForm.get(['method']).hasError('required')">
+        {{ 'ERRORS.REQUIRED' | translate }}
+      </mat-error>
     </mat-card-content>
   </mat-card>
 
@@ -44,13 +54,13 @@
     </mat-card-content>
   </mat-card>
 
-  <div class="mt3 tc">
+  <div class="mt3 flex justify-between">
     <button mat-raised-button color="secondary" type="button" [routerLink]="['/delivery']">
       <mat-icon aria-hidden="true">navigate_before</mat-icon>
       {{ 'COMMON.PREVIOUS' | translate }}
     </button>
 
-    <button mat-raised-button color="primary" type="submit" class="ml4">
+    <button mat-raised-button color="primary" type="submit">
       {{ 'COMMON.NEXT' | translate }}
       <mat-icon aria-hidden="true">navigate_next</mat-icon>
     </button>

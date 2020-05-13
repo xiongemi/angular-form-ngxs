@@ -1,0 +1,77 @@
+<div class="ma4 mh5-m mh7-l">
+  <h1>{{ 'COMMON.REVIEW' | translate }}</h1>
+
+  <mat-divider></mat-divider>
+  <div class="flex justify-between">
+    <h3>
+      {{ 'TABS.DELIVERY' | translate }}
+    </h3>
+    <button mat-button color="secondary" [routerLink]="['/delivery']">
+      {{ 'COMMON.EDIT' | translate }}
+      <mat-icon aria-hidden="true">edit</mat-icon>
+    </button>
+  </div>
+  <table>
+    <tr>
+      <th>{{ 'ADDRESS.BILLING_ADDRESS' | translate }}:</th>
+      <td [innerHTML]="addressFormValueToHTML(formsValues?.deliveryForm?.model?.billingAddress)"></td>
+    </tr>
+    <tr>
+      <th>{{ 'ADDRESS.SHIPPING_ADDRESS' | translate }}:</th>
+      <td>
+        <span *ngIf="formsValues?.deliveryForm?.model?.isShippingSame">
+          {{ 'DELIVERY.SHIPPING_SAME' | translate }}
+        </span>
+        <div
+          *ngIf="!formsValues?.deliveryForm?.model?.isShippingSame"
+          [innerHTML]="addressFormValueToHTML(formsValues?.deliveryForm?.model?.shippingAddress)"
+        ></div>
+      </td>
+    </tr>
+    <tr>
+      <th>{{ 'DELIVERY.EMAIL' | translate }}:</th>
+      <td>{{ formsValues?.deliveryForm?.model?.account?.email }}</td>
+    </tr>
+  </table>
+
+  <mat-divider></mat-divider>
+  <div class="flex justify-between">
+    <h3>
+      {{ 'TABS.SHIPPING' | translate }}
+    </h3>
+    <button mat-button color="secondary" [routerLink]="['/shipping']">
+      {{ 'COMMON.EDIT' | translate }}
+      <mat-icon aria-hidden="true">edit</mat-icon>
+    </button>
+  </div>
+  <div>
+    <span class="fw5">
+      {{ shippingMethod?.price ? (shippingMethod?.price | currency) : '' }}
+      {{ shippingMethod?.type }}:
+    </span>
+    {{ 'SHIPPING.GET_IT_BY' | translate }}
+    {{ shippingMethod?.arrival?.min | date: 'E, MMM d' }}
+    {{ shippingMethod?.arrival?.min ? '-' : '' }}
+    {{ shippingMethod?.arrival?.max | date: 'E, MMM d' }}
+  </div>
+
+  <mat-card class="mt3" *ngIf="formsValues?.shippingForm?.model?.isAGift">
+    <h4>{ 'SHIPPING.IS_A_GIFT' | translate }}</h4>
+    <table>
+      <tr>
+        <th>{{ 'SHIPPING.RECIPIENT_NAME' | translate }}:</th>
+        <td>
+          {{ formsValues?.shippingForm?.model?.giftOptions?.name || '/' }}
+        </td>
+      </tr>
+      <tr>
+        <th>{{ 'SHIPPING.CUSTOME_MESSAGE' | translate }}:</th>
+        <td>{{ formsValues?.shippingForm?.model?.giftOptions?.message || '/' }}</td>
+      </tr>
+      <tr>
+        <th>{{ 'SHIPPING.GIFT_WRAP' | translate }}:</th>
+        <td>{{ formsValues?.deliveryForm?.model?.account?.email }}</td>
+      </tr>
+    </table>
+  </mat-card>
+</div>

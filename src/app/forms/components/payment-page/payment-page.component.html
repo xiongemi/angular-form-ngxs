@@ -1,25 +1,66 @@
-<form [formGroup]="paymentPageForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="paymentPageForm" ngxsForm="forms.paymentForm" (ngSubmit)="onSubmit()">
+  <div class="mb3">
+    <button mat-raised-button color="secondary" type="reset">
+      {{ 'COMMON.RESET' | translate }}
+      <mat-icon aria-hidden="true">clear</mat-icon>
+    </button>
+  </div>
+
+  <mat-error class="mb3" *ngIf="submitted && paymentPageForm.invalid">
+    {{ 'ERRORS.FORM_ERROR' | translate }}
+  </mat-error>
   <mat-card>
     <mat-card-header>
       <mat-card-title>{{ 'PAYMENT.PAYMENT_METHOD' | translate }}</mat-card-title>
     </mat-card-header>
     <mat-card-content id="payment-method">
-      <mat-form-field>
-        <mat-label>{{ 'PAYMENT.CARD_NUMBER' | translate }}</mat-label>
-        <input matInput type="tel" formControlName="cardNumber" required />
-      </mat-form-field>
+      <div>
+        <mat-form-field>
+          <mat-label>{{ 'PAYMENT.CARD_NUMBER' | translate }}</mat-label>
+          <input matInput type="tel" formControlName="cardNumber" mask="0000-0000-0000-0000" placeholder="####-####-####-####" required />
+          <mat-error *ngIf="paymentPageForm.get(['cardNumber']).hasError('required')">
+            {{ 'ERRORS.REQUIRED' | translate }}
+          </mat-error>
+          <mat-error
+            *ngIf="paymentPageForm.get(['cardNumber']).hasError('pattern') || paymentPageForm.get(['cardNumber']).hasError('mask')"
+          >
+            {{ 'ERRORS.PATTERN' | translate }}
+          </mat-error>
+        </mat-form-field>
+      </div>
 
       <div>
         <mat-form-field class="mr3">
           <mat-label>{{ 'PAYMENT.EXPIRY_DATE' | translate }}</mat-label>
           <input matInput type="month" formControlName="expiryDate" [min]="minExpiryDate" required />
+          <mat-error *ngIf="paymentPageForm.get(['expiryDate']).hasError('required')">
+            {{ 'ERRORS.REQUIRED' | translate }}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>{{ 'PAYMENT.CVV' | translate }}</mat-label>
-          <input matInput type="tel" formControlName="cvv" required />
+          <input matInput type="tel" formControlName="cvv" required minlength="3" maxlength="3" />
+          <mat-error *ngIf="paymentPageForm.get(['cvv']).hasError('required')">
+            {{ 'ERRORS.REQUIRED' | translate }}
+          </mat-error>
+          <mat-error *ngIf="paymentPageForm.get(['cvv']).hasError('pattern')">
+            {{ 'ERRORS.PATTERN' | translate }}
+          </mat-error>
         </mat-form-field>
       </div>
     </mat-card-content>
   </mat-card>
+
+  <div class="mt3 flex justify-between">
+    <button mat-raised-button color="secondary" type="button" [routerLink]="['/shipping']">
+      <mat-icon aria-hidden="true">navigate_before</mat-icon>
+      {{ 'COMMON.PREVIOUS' | translate }}
+    </button>
+
+    <button mat-raised-button color="primary" type="submit">
+      {{ 'COMMON.PAY' | translate }}
+      <mat-icon aria-hidden="true">payment</mat-icon>
+    </button>
+  </div>
 </form>

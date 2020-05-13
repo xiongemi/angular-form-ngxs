@@ -1,4 +1,14 @@
-<form [formGroup]="deliveryPageForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="deliveryPageForm" ngxsForm="forms.deliveryForm" (ngSubmit)="onSubmit()">
+  <div class="mb3">
+    <button mat-raised-button color="secondary" type="button" (click)="onReset()">
+      {{ 'COMMON.RESET' | translate }}
+      <mat-icon aria-hidden="true">clear</mat-icon>
+    </button>
+  </div>
+
+  <mat-error class="mb3" *ngIf="submitted && deliveryPageForm.invalid">
+    {{ 'ERRORS.FORM_ERROR' | translate }}
+  </mat-error>
   <mat-card>
     <mat-card-header>
       <mat-card-title>{{ 'ADDRESS.BILLING_ADDRESS' | translate }}</mat-card-title>
@@ -76,13 +86,10 @@
     </mat-card-content>
   </mat-card>
 
-  <div class="mt3 tc">
+  <div class="mt3 tr">
     <button mat-raised-button color="primary" type="submit">
       {{ 'COMMON.NEXT' | translate }}
-      <mat-icon aria-hidden="false" aria-label="Example home icon">navigate_next</mat-icon>
+      <mat-icon aria-hidden="true">navigate_next</mat-icon>
     </button>
-    <mat-error *ngIf="submitted && deliveryPageForm.invalid">
-      {{ 'ERRORS.FORM_ERROR' | translate }}
-    </mat-error>
   </div>
 </form>

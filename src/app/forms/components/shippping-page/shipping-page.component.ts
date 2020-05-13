@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { RoutePath } from 'src/app/models/route-path.enum';
 import { shippingMethods } from '../../models/shipping-methods.const';
 
 @Component({
@@ -11,21 +12,25 @@ import { shippingMethods } from '../../models/shipping-methods.const';
 })
 export class ShippingPageComponent {
   shippingPageForm = this.fb.group({
-    method: [1],
+    method: [1, Validators.required],
     isAGift: [null],
     giftOptions: this.fb.group({
-      includeGiftRecipt: [null],
+      includeGiftRecipt: [false],
       name: [null],
       message: [null],
       wrap: [false]
     })
   });
 
-  shippingMethods = shippingMethods.sort((method1, method2) => method1.price - method2.price);
+  shippingMethods = shippingMethods;
+  submitted = false;
 
   constructor(private fb: FormBuilder, private router: Router) {}
 
   onSubmit() {
-    this.router.navigate(['payment']);
+    this.submitted = true;
+    if (this.shippingPageForm.valid) {
+      this.router.navigate([RoutePath.payment]);
+    }
   }
 }

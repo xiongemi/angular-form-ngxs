@@ -1,12 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
+import { RoutePath } from 'src/app/models/route-path.enum';
 import { FormGroupErrorStateMatcher } from 'src/app/shared/form-group-error-state-matcher';
 import { passwordRegex } from 'src/app/shared/regexes.const';
 import { deliveryPageFromValidator } from '../../services/delivery-page-form.validator';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'afn-delivery-page',
@@ -48,6 +49,16 @@ export class DeliveryPageComponent implements OnInit, OnDestroy {
     );
 
     this.subscription.add(
+      this.deliveryPageForm
+        .get('createAccount')
+        .valueChanges.pipe(filter((createAccount) => !createAccount))
+        .subscribe(() => {
+          this.deliveryPageForm.get(['account', 'password']).reset();
+          this.deliveryPageForm.get(['account', 'confirmPassword']).reset();
+        })
+    );
+
+    this.subscription.add(
       this.deliveryPageForm.valueChanges.subscribe(() => {
         this.submitted = false;
       })
@@ -62,7 +73,17 @@ export class DeliveryPageComponent implements OnInit, OnDestroy {
     this.submitted = true;
     this.deliveryPageForm.markAllAsTouched();
     if (this.deliveryPageForm.valid) {
-      this.router.navigate(['shipping']);
+      this.router.navigate([RoutePath.shipping]);
     }
+  }
+
+  onReset() {
+    this.deliveryPageForm.reset({
+      billingAddress: {},
+      isShippingSame: true,
+      shippingAddress: {},
+      createAccount: true,
+      account: {}
+    });
   }
 }
