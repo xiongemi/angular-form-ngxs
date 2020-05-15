@@ -104,7 +104,7 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {}
+          "options": { "baseHref": "/angular-form-ngxs/", "name": "Emily Xiong", "email": "xiongemi@gmail.com" }
         }
       }
     }

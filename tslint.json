@@ -44,7 +44,7 @@
     "no-output-rename": true,
     "no-outputs-metadata-property": true,
     "template-banana-in-box": true,
-    "template-no-negated-async": true,
+    "template-no-negated-async": false,
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
     "indent": [true, "spaces", 2],

@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --baseHref=/angular-form-ngxs/",
+    "build": "ng build --baseHref=/angular-form-ngxs/",
     "test": "ng test",
     "lint": "ng lint",
     "lint-fix": "ng lint --fix",
