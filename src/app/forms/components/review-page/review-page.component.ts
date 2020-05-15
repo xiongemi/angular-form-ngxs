@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
+import { StateReset } from 'ngxs-reset-plugin';
 
 import { addressFormValueToHTML } from 'src/app/shared/address-form/address-form-value.interface';
 import { FormStateModel } from '../../models/from-state-model.interface';
@@ -22,5 +23,12 @@ export class ReviewPageComponent implements OnInit {
   ngOnInit() {
     this.formsValues = this.store.selectSnapshot(FormsState);
     this.shippingMethod = shippingMethods.find((method) => method.id === this.formsValues?.shippingForm?.model?.method);
+    this.store.dispatch(new StateReset(FormsState));
+  }
+
+  maskCardNumber(cardNumber: number): string {
+    const cardNumberString = cardNumber.toString().split('');
+    cardNumberString.splice(0, 12, '****-****-****-');
+    return cardNumberString.join('');
   }
 }

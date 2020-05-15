@@ -9,6 +9,7 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { NgxMaskModule } from 'ngx-mask';
+import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
 
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -38,6 +39,7 @@ export function createTranslateLoader(http: HttpClient) {
       developmentMode: !environment.production
     }),
     NgxsFormPluginModule.forRoot(),
+    NgxsResetPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
     NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production })
   ],

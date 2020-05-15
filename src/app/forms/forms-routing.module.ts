@@ -5,9 +5,9 @@ import { RoutePath } from '../models/route-path.enum';
 import { DeliveryPageComponent } from './components/delivery-page/delivery-page.component';
 import { FormsHomeComponent } from './components/forms-home/forms-home.component';
 import { PaymentPageComponent } from './components/payment-page/payment-page.component';
+import { ReviewPageComponent } from './components/review-page/review-page.component';
 import { ShippingPageComponent } from './components/shippping-page/shipping-page.component';
 import { CanActivateForms } from './services/can-activate-forms';
-import { ReviewPageComponent } from './components/review-page/review-page.component';
 
 const routes: Routes = [
   {

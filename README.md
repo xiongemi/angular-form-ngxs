@@ -1,6 +1,12 @@
-# AngularFormsNgxs
+# Angular Forms Example with Ngxs
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
+
+## Libraries
+
+- Component Library: [Angular Material](https://material.angular.io/)
+- State Management: [NGXS](https://www.ngxs.io/)
+- CSS: [tachyons](https://tachyons.io/)
 
 ## Development server
 

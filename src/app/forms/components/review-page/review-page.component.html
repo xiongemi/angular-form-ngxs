@@ -2,15 +2,9 @@
   <h1>{{ 'COMMON.REVIEW' | translate }}</h1>
 
   <mat-divider></mat-divider>
-  <div class="flex justify-between">
-    <h3>
-      {{ 'TABS.DELIVERY' | translate }}
-    </h3>
-    <button mat-button color="secondary" [routerLink]="['/delivery']">
-      {{ 'COMMON.EDIT' | translate }}
-      <mat-icon aria-hidden="true">edit</mat-icon>
-    </button>
-  </div>
+  <h3>
+    {{ 'TABS.DELIVERY' | translate }}
+  </h3>
   <table>
     <tr>
       <th>{{ 'ADDRESS.BILLING_ADDRESS' | translate }}:</th>
@@ -35,15 +29,10 @@
   </table>
 
   <mat-divider></mat-divider>
-  <div class="flex justify-between">
-    <h3>
-      {{ 'TABS.SHIPPING' | translate }}
-    </h3>
-    <button mat-button color="secondary" [routerLink]="['/shipping']">
-      {{ 'COMMON.EDIT' | translate }}
-      <mat-icon aria-hidden="true">edit</mat-icon>
-    </button>
-  </div>
+  <h3>
+    {{ 'TABS.SHIPPING' | translate }}
+  </h3>
+
   <div>
     <span class="fw5">
       {{ shippingMethod?.price ? (shippingMethod?.price | currency) : '' }}
@@ -56,8 +45,19 @@
   </div>
 
   <mat-card class="mt3" *ngIf="formsValues?.shippingForm?.model?.isAGift">
-    <h4>{ 'SHIPPING.IS_A_GIFT' | translate }}</h4>
+    <h4>{{ 'SHIPPING.IS_A_GIFT' | translate }}</h4>
     <table>
+      <tr>
+        <th>{{ 'SHIPPING.INCLUDE_GIFT_RECEIPT' | translate }}:</th>
+        <td>
+          <mat-icon aria-hidden="false" aria-label="yes" *ngIf="formsValues?.shippingForm?.model?.giftOptions?.includeGiftRecipt">
+            check
+          </mat-icon>
+          <mat-icon aria-hidden="false" aria-label="no" *ngIf="!formsValues?.shippingForm?.model?.giftOptions?.includeGiftRecipt">
+            close
+          </mat-icon>
+        </td>
+      </tr>
       <tr>
         <th>{{ 'SHIPPING.RECIPIENT_NAME' | translate }}:</th>
         <td>
@@ -70,8 +70,27 @@
       </tr>
       <tr>
         <th>{{ 'SHIPPING.GIFT_WRAP' | translate }}:</th>
-        <td>{{ formsValues?.deliveryForm?.model?.account?.email }}</td>
+        <td>
+          <mat-icon aria-hidden="false" aria-label="yes" *ngIf="formsValues?.shippingForm?.model?.giftOptions?.wrap">check</mat-icon>
+          <mat-icon aria-hidden="false" aria-label="no" *ngIf="!formsValues?.shippingForm?.model?.giftOptions?.wrap">close</mat-icon>
+        </td>
       </tr>
     </table>
   </mat-card>
+
+  <mat-divider></mat-divider>
+  <h3>
+    {{ 'TABS.PAYMENT' | translate }}
+  </h3>
+  <div>
+    <span class="b">{{ 'PAYMENT.CARD_NUMBER' | translate }}: </span>
+    {{ maskCardNumber(formsValues?.paymentForm?.model?.cardNumber) }}
+  </div>
+</div>
+
+<div class="tc">
+  <button mat-raised-button color="primary" [routerLink]="['/delivery']">
+    {{ 'COMMON.RESTART' | translate }}
+    <mat-icon aria-hidden="true">refresh</mat-icon>
+  </button>
 </div>
