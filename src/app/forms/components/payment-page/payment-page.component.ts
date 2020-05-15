@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { format } from 'date-fns';
 import { Subscription } from 'rxjs';
 
-import { numberOnlyRegex } from 'src/app/shared/regexes.const';
 import { RoutePath } from 'src/app/models/route-path.enum';
+import { numberOnlyRegex } from 'src/app/shared/regexes.const';
 
 const minExpiryDate = format(new Date(), 'yyyy-MM');
 

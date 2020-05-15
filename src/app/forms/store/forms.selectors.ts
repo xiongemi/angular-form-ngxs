@@ -1,5 +1,5 @@
-import { AppStateModel } from 'src/app/models/app-state-model.interface';
 import { createSelector } from '@ngxs/store';
+import { AppStateModel } from 'src/app/models/app-state-model.interface';
 
 export const formState = (appState: AppStateModel) => appState.forms;
 

@@ -8,7 +8,7 @@
     routerLinkActive
     #rla2="routerLinkActive"
     [active]="rla2.isActive"
-    [disabled]="!(isDeliveryFormValid$ | async)"
+    [disabled]="(isDeliveryFormValid$ | async) === (false | null | undefined)"
   >
     {{ 'TABS.SHIPPING' | translate }}
   </a>
@@ -18,7 +18,7 @@
     routerLinkActive
     #rla3="routerLinkActive"
     [active]="rla3.isActive"
-    [disabled]="!(isPaymentEnabled$ | async)"
+    [disabled]="(isPaymentEnabled$ | async) === (false | null | undefined)"
   >
     {{ 'TABS.PAYMENT' | translate }}
   </a>
