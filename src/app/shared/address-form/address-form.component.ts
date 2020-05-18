@@ -1,6 +1,7 @@
 import { Component, forwardRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+
 import { nameRegex } from '../regexes.const';
 import { AddressFormValue } from './address-form-value.interface';
 
@@ -10,7 +11,6 @@ import { AddressFormValue } from './address-form-value.interface';
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AddressFormComponent), multi: true }]
 })
 export class AddressFormComponent implements ControlValueAccessor, OnInit, OnDestroy, OnChanges {
-  constructor(private fb: FormBuilder) {}
   @Input() touched: boolean;
 
   addressForm = this.fb.group({
@@ -28,6 +28,8 @@ export class AddressFormComponent implements ControlValueAccessor, OnInit, OnDes
 
   onChange: any = (_: AddressFormValue) => {};
   onTouch: any = () => {};
+
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.subscription.add(

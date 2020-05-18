@@ -5,7 +5,7 @@
     "PAYMENT": "Payment"
   },
   "DELIVERY": {
-    "SHIPPING_SAME": "My shipping Address is same as my billing Address.",
+    "SHIPPING_SAME": "My shipping address is same as my billing address.",
     "USER_CHECKOUT_OPTIONS": "User checkout options",
     "CREATE_ACCOUNT": "Create Account",
     "CHECKOUT_AS_GUEST": "Checkout as a Guest",
