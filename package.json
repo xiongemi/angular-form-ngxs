@@ -26,6 +26,7 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "@ngxs/form-plugin": "^3.6.2",
     "@ngxs/logger-plugin": "^3.6.2",
+    "@ngxs/storage-plugin": "^3.6.2",
     "@ngxs/store": "^3.6.2",
     "ngx-mask": "^9.0.2",
     "ngxs-reset-plugin": "^1.3.0",

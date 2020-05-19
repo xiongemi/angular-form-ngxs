@@ -7,6 +7,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { NgxMaskModule } from 'ngx-mask';
 import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
@@ -41,7 +42,8 @@ export function createTranslateLoader(http: HttpClient) {
     NgxsFormPluginModule.forRoot(),
     NgxsResetPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
-    NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production })
+    NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
+    NgxsStoragePluginModule.forRoot({ key: ['forms'] })
   ],
   providers: [],
   bootstrap: [AppComponent]
