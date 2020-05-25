@@ -1,5 +1,5 @@
-import { FormStateModel } from '../forms/models/from-state-model.interface';
+import { FormsStateModel } from '../forms/models/froms-state-model.interface';
 
 export interface AppStateModel {
-  forms: FormStateModel;
+  forms: FormsStateModel;
 }

@@ -1,4 +1,4 @@
-import { FormState } from './form-state.interface';
+import { FormState } from './forms-state.interface';
 
 export const initFormState: FormState<any> = {
   model: undefined,

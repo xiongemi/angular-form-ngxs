@@ -3,7 +3,7 @@ import { Store } from '@ngxs/store';
 import { StateReset } from 'ngxs-reset-plugin';
 
 import { addressFormValueToHTML } from 'src/app/shared/address-form/address-form-value.interface';
-import { FormStateModel } from '../../models/from-state-model.interface';
+import { FormsStateModel } from '../../models/froms-state-model.interface';
 import { ShippingMethod } from '../../models/shipping-method.interface';
 import { shippingMethods } from '../../models/shipping-methods.const';
 import { FormsState } from '../../store/forms.state';
@@ -14,7 +14,7 @@ import { FormsState } from '../../store/forms.state';
   styleUrls: ['./review-page.component.css']
 })
 export class ReviewPageComponent implements OnInit {
-  formsValues: FormStateModel;
+  formsValues: FormsStateModel;
   addressFormValueToHTML = addressFormValueToHTML;
   shippingMethod: ShippingMethod;
 
