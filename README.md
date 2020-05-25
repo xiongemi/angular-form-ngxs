@@ -8,6 +8,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - State Management: [NGXS](https://www.ngxs.io/)
 - CSS: [tachyons](https://tachyons.io/)
 
+## Related Links
+- github page: https://xiongemi.github.io/angular-form-ngxs
+- medium post: https://medium.com/@emilyxiong/how-to-create-a-complex-form-in-angular-bdfaee0464d3
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/angular-form-ngxs`. The app will automatically reload if you change any of the source files.
