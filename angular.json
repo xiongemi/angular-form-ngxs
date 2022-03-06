@@ -18,8 +18,13 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": ["src/icon.ico", "src/assets"],
-            "styles": ["src/styles.css"],
+            "assets": [
+              "src/icon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -83,8 +88,14 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/icon.ico", "src/assets"],
-            "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "src/styles.css"],
+            "assets": [
+              "src/icon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "src/styles.css"
+            ],
             "scripts": []
           }
         },
@@ -102,13 +113,27 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": { "baseHref": "/angular-form-ngxs/", "name": "Emily Xiong", "email": "xiongemi@gmail.com" }
+          "options": {
+            "baseHref": "/angular-form-ngxs/",
+            "name": "Emily Xiong",
+            "email": "xiongemi@gmail.com"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "defaultProject": "angular-forms-ngxs",
   "cli": {
-    "analytics": "0abf01a7-93bc-4bbd-a242-c12c962270d0"
+    "analytics": "0abf01a7-93bc-4bbd-a242-c12c962270d0",
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }

@@ -1,5 +1,13 @@
 # Angular Forms Example with Ngxs
 
+Blog: https://medium.com/swlh/how-to-create-a-complex-form-in-angular-bdfaee0464d3
+
+## Commands
+
+- run locally: `npm run start` and it would be served on http://localhost:4200/angular-form-ngxs
+- deploy to github pages: `npm run build && npm run deploy`
+- lint: `npm run lint` and `npm run lint-fix`
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
 
 ## Libraries
@@ -9,6 +17,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - CSS: [tachyons](https://tachyons.io/)
 
 ## Related Links
+
 - github page: https://xiongemi.github.io/angular-form-ngxs
 - medium post: https://medium.com/@emilyxiong/how-to-create-a-complex-form-in-angular-bdfaee0464d3
 
